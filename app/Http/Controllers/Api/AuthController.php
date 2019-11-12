@@ -31,7 +31,17 @@ class AuthController extends Controller
 
         $tokenRequest = Request::create('/oauth/token', 'post', $data);
 
-        return app()->handle($tokenRequest);
+        $tokenResponse = app()->handle($tokenRequest);
+        $contentString = $tokenResponse->content();
+        $tokenContent = json_decode($contentString, true);
+
+        if (!empty($tokenContent['access_token'])) {
+            return $tokenResponse;
+        }
+
+        return response()->json([
+            'message' => 'Unauthenticated'
+        ]);
     }
 
     public function register(UserRegisterRequest $request)
