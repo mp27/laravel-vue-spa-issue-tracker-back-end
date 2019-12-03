@@ -19,4 +19,14 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class, 'roles_permissions');
     }
+
+    public function scopeDeveloper($query)
+    {
+        return $query->where('slug', 'developer');
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('slug', 'admin');
+    }
 }
