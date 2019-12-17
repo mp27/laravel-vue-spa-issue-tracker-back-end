@@ -13,6 +13,8 @@
 
 Route::group(["middleware" => "auth:api"], function () {
     Route::get('/me', 'Api\UsersController@me')->name('api.me');
+    Route::post('/change-password', 'Api\UsersController@changePassword')->name('api.change-password');
+    Route::post('/change-details', 'Api\UsersController@changeDetails')->name('api.change-details');
 });
 
 Route::post('/login', 'Api\AuthController@login')->name('api.login');
