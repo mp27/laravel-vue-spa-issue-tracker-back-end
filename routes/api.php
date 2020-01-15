@@ -23,4 +23,4 @@ Route::post('/register', 'Api\AuthController@register')->name('api.register');
 Route::post('/forgot-password', 'Api\ForgotPasswordController@sendResetLinkEmail')->name('api.forgot-password');
 Route::post('/reset-password', 'Api\ResetPasswordController@reset')->name('api.reset-password');
 
-
+Route::get('/constants', 'Api\ConstantsController@index')->name('api.constants');
