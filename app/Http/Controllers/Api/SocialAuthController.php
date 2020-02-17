@@ -28,7 +28,10 @@ class SocialAuthController extends Controller
 
         if (!$user->token) {
             // return json
-            dd('failed');
+            return response()->json([
+                "success" => false,
+                "message" => "Failed to login"
+            ], 401);
         }
 
         $appUser = User::whereEmail($user->email)->first();
