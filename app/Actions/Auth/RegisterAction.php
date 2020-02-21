@@ -22,6 +22,8 @@ class RegisterAction
 
         $user->roles()->attach($developerRole->id);
 
+        $user->sendEmailVerificationNotification();
+
         return $user;
     }
 }

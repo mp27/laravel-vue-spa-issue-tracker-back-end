@@ -21,6 +21,7 @@ Route::post('/login', 'Api\AuthController@login')->name('api.login');
 Route::post('/register', 'Api\AuthController@register')->name('api.register');
 Route::get('/authorize/{provider}/redirect', 'Api\SocialAuthController@redirectToProvider')->name('api.social.redirect');
 Route::get('/authorize/{provider}/callback', 'Api\SocialAuthController@handleProviderCallback')->name('api.social.callback');
+Route::get('/email-verification', 'Api\VerificationController@verify')->name('verification.verify');
 
 Route::post('/forgot-password', 'Api\ForgotPasswordController@sendResetLinkEmail')->name('api.forgot-password');
 Route::post('/reset-password', 'Api\ResetPasswordController@reset')->name('api.reset-password');

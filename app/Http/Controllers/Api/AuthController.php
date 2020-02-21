@@ -9,8 +9,6 @@ use App\Actions\Auth\RegisterAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
-use App\User;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -21,6 +19,12 @@ class AuthController extends Controller
 
         if (!empty($tokenContent['access_token'])) {
             return $passportRequest["response"];
+        }
+
+        if (empty($tokenContent)) {
+            return response()->json([
+                'message' => 'Email is not verified'
+            ]);
         }
 
         return response()->json([

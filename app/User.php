@@ -4,11 +4,12 @@ namespace App;
 
 use App\Notifications\ResetPasswordNotification;
 use App\Traits\HasPermissions;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable, HasPermissions;
 
